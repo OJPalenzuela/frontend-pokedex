@@ -10,4 +10,13 @@ const pokemonsReducer = (state = [], action) => {
   }
 };
 
-export { pokemonsReducer };
+const infoReducer = (state = [], action) => {
+  switch (action.type) {
+    case types.getInfoPokemons:
+      return action.payload
+    default:
+      return state;
+  }
+};
+
+export { pokemonsReducer, infoReducer };

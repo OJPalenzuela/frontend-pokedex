@@ -1,18 +1,20 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { SuperContainer, Wrapper } from '../assets/styles/style'
 import Card from '../components/Card'
 
 const Home = () => {
     const pokemons = useSelector(state => state.pokemons)
     return (
-        <div>
+        <SuperContainer>
+            <Wrapper>
             {
                 pokemons.map((pokemon, id) => (
                     <Card pokemon={pokemon} key={id}/>
                 ))
             }
-            
-        </div>
+            </Wrapper>
+        </SuperContainer>
     )
 }
 

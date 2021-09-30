@@ -12,12 +12,34 @@ const GlobalStyle = createGlobalStyle`
   
   `;
 
+const typeColors = {
+  electric: '#F8D030',
+  normal: '#E0C068 ',
+  fire: '#F08030',
+  water: '#6890F0',
+  ice: '#AFEAFD',
+  rock: '#999799',
+  flying: '#A890F0',
+  grass: '#78C850',
+  psychic: '#FFC6D9',
+  ghost: '#561D25',
+  bug: '#A8B820',
+  poison: '#A040A0',
+  ground: '#D2B074',
+  dragon: '#DA627D',
+  steel: '#1D8A99',
+  fighting: '#2F2F2F',
+  default: '#2A1A1F',
+};
+
 const Container = styled.div`
   display: ${(props) => (props.display ? props.display : "flex")};
   flex-wrap: ${(props) => (props.flexWrap ? props.flexWrap : "wrap")};
   flex-direction: ${(props) => (props.direction ? props.direction : "row")};
   background-color: ${(props) =>
         props.background ? props.background : "transparent"};
+        background: ${(props) =>
+        props.backgroundLinear ? props.backgroundLinear : "transparent"};
   color: ${(props) => (props.color ? props.color : "black")};
   width: ${(props) => (props.width ? props.width : "auto")};
   height: ${(props) => (props.height ? props.height : "auto")};
@@ -67,4 +89,5 @@ export {
     GlobalStyle,
     SuperContainer,
     Wrapper,
+    typeColors,
 };

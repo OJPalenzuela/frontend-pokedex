@@ -1,4 +1,4 @@
-import { getPokemons } from "../../services/pokemon"
+import { getPokemons, idPokemon } from "../../services/pokemon"
 import { types } from "../types/types"
 
 const findPokemons = () => {
@@ -16,4 +16,19 @@ const findPokemons = () => {
     }
 }
 
-export {findPokemons}
+const infoPokemons = () => {
+    return (dispacth) =>{
+        idPokemon()
+            .then((pokemon) => {
+                dispacth({
+                    type: types.getPokemons,
+                    payload: pokemon
+                })
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+    }
+}
+
+export {findPokemons, infoPokemons}
