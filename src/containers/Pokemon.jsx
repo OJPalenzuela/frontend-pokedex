@@ -154,7 +154,7 @@ const Pokemon = () => {
                                             {info.stat.name.replace("-", " ")}
                                         </Paragraph>
                                         <Container width="200px" alignItems={"center"}>
-                                            <ProgressBar style={{"width": "100%"}} max="350" now={info.base_stat} label={`${info.base_stat}`} />
+                                            <ProgressBar style={{"width": "100%"}} max="200" now={info.base_stat} label={`${info.base_stat}`} />
                                         </Container>
                                     </Container>
                                 ))

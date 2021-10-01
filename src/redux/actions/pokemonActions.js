@@ -1,8 +1,9 @@
+import Swal from "sweetalert2"
 import { getPokemonByName, getPokemons } from "../../services/pokemon"
 import { types } from "../types/types"
 
 const findPokemons = () => {
-    return (dispacth) =>{
+    return (dispacth) => {
         getPokemons()
             .then((pokemons) => {
                 dispacth({
@@ -17,7 +18,7 @@ const findPokemons = () => {
 }
 
 const findPokemon = (name) => {
-    return (dispacth) =>{
+    return (dispacth) => {
         getPokemonByName(name)
             .then((pokemon) => {
                 dispacth({
@@ -37,7 +38,7 @@ const setPokemon = (pokemon) => ({
 })
 
 const searchPokemon = (name) => {
-    return (dispacth) =>{
+    return (dispacth) => {
         getPokemonByName(name)
             .then((pokemons) => {
                 dispacth({
@@ -46,9 +47,13 @@ const searchPokemon = (name) => {
                 })
             })
             .catch((e) => {
-                console.log(e)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `No se encontraron resultados para ${name}`,
+                })
             })
     }
 }
 
-export {findPokemons, searchPokemon, findPokemon, setPokemon}
+export { findPokemons, searchPokemon, findPokemon, setPokemon }
