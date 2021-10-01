@@ -10,6 +10,15 @@ const pokemonsReducer = (state = [], action) => {
   }
 };
 
+const pokemonReducer = (state = {}, action) => {
+  switch (action.type) {
+    case types.getPokemon:
+      return action.payload
+    default:
+      return state;
+  }
+};
+
 const infoReducer = (state = [], action) => {
   switch (action.type) {
     case types.getInfoPokemons:
@@ -19,4 +28,4 @@ const infoReducer = (state = [], action) => {
   }
 };
 
-export { pokemonsReducer, infoReducer };
+export { pokemonsReducer, infoReducer, pokemonReducer };

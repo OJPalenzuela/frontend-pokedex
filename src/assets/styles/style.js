@@ -36,10 +36,8 @@ const Container = styled.div`
   display: ${(props) => (props.display ? props.display : "flex")};
   flex-wrap: ${(props) => (props.flexWrap ? props.flexWrap : "wrap")};
   flex-direction: ${(props) => (props.direction ? props.direction : "row")};
-  background-color: ${(props) =>
+  background: ${(props) =>
         props.background ? props.background : "transparent"};
-        background: ${(props) =>
-        props.backgroundLinear ? props.backgroundLinear : "transparent"};
   color: ${(props) => (props.color ? props.color : "black")};
   width: ${(props) => (props.width ? props.width : "auto")};
   height: ${(props) => (props.height ? props.height : "auto")};
@@ -54,7 +52,7 @@ const Container = styled.div`
   min-height: ${(props) => (props.minHeight ? props.minHeight : "unset")};
   font-size: ${(props) => (props.fontSize ? props.fontSize : "auto")};
 
-  position: ${(props) => (props.position ? props.position : "unset")};
+  position: ${(props) => (props.position ? props.position : "static")};
   top: ${(props) => (props.top ? props.top : "unset")};
   left: ${(props) => (props.left ? props.left : "unset")};
   bottom: ${(props) => (props.bottom ? props.bottom : "unset")};
@@ -82,6 +80,18 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
+const Img = styled.img`
+  width:${(props) => (props.width ? props.width : "auto")};
+  height: ${(props) => (props.height ? props.height : "auto")};
+`
+
+const Paragraph = styled.p`
+  color: ${(props) => (props.color ? props.color : "white")};
+  font-size: ${(props) => (props.size ? props.size : "16px")};
+  font-weight: ${(props) => (props.weight ? props.weight : "normal")};
+  margin: ${(props) => (props.margin ? props.margin : "0")};
+`
+
 
 
 export {
@@ -90,4 +100,6 @@ export {
     SuperContainer,
     Wrapper,
     typeColors,
+    Img,
+    Paragraph,
 };

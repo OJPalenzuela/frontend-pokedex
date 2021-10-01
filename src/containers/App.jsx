@@ -2,15 +2,14 @@ import React, { useEffect } from 'react'
 import Routers from '../routers/Router';
 import "bootstrap/dist/css/bootstrap.min.css"
 
-
-import { infoPokemons } from '../redux/actions/pokemonActions';
 import { useDispatch } from 'react-redux';
+import { findPokemons } from '../redux/actions/pokemonActions';
 
 const App = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(infoPokemons())
+        dispatch(findPokemons())
     }, [dispatch])
     return (
         <Routers />

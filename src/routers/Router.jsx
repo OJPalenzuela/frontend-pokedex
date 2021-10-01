@@ -8,6 +8,7 @@ import {
 /* import PublicRouter from "./PublicRouter"
 import PrivateRouter from "./PrivateRouter" */
 import Home from "../containers/Home";
+import Pokemon from "../containers/Pokemon";
 
 const Routers = () => {
   
@@ -15,6 +16,7 @@ const Routers = () => {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/pokemon/:name" component={Pokemon} />
           <Redirect to="/" />
         </Switch>
       </Router>

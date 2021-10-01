@@ -5,5 +5,6 @@ export const types = {
     signup: "[AUTH] signup",
 
     getPokemons:  "[POKEMON] Get all pokemons",
+    getPokemon:  "[POKEMON] Get single pokemon",
     getInfoPokemons: "[Pokemon] Get info",
 }
