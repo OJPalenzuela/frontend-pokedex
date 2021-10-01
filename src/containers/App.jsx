@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import { useDispatch } from 'react-redux';
 import { findPokemons } from '../redux/actions/pokemonActions';
+import {GlobalStyle} from '../assets/styles/style'
 
 const App = () => {
     const dispatch = useDispatch()
@@ -12,7 +13,10 @@ const App = () => {
         dispatch(findPokemons())
     }, [dispatch])
     return (
+        <>
+        <GlobalStyle />
         <Routers />
+        </>
     )
 }
 

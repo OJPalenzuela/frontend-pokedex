@@ -9,7 +9,9 @@ const GlobalStyle = createGlobalStyle`
     padding: unset;
   }
   
-  
+  #root{
+    height: 100%;
+  }
   `;
 
 const typeColors = {
@@ -51,16 +53,19 @@ const Container = styled.div`
   min-width: ${(props) => (props.minWidth ? props.minWidth : "unset")};
   min-height: ${(props) => (props.minHeight ? props.minHeight : "unset")};
   font-size: ${(props) => (props.fontSize ? props.fontSize : "auto")};
-
+  max-width: ${(props) => (props.maxWidth ? props.maxWidth : "unset")};
   position: ${(props) => (props.position ? props.position : "static")};
   top: ${(props) => (props.top ? props.top : "unset")};
   left: ${(props) => (props.left ? props.left : "unset")};
   bottom: ${(props) => (props.bottom ? props.bottom : "unset")};
+  filter: ${(props) => (props.filter ? props.filter : "unset")};
+
+  flex: ${(props) => (props.flex ? props.flex : "unset")};
 `;
 
 const SuperContainer = styled.div`
   display: flex;
-  background-color: ${(props) =>
+  background: ${(props) =>
         props.background ? props.background : "transparent"};
   width: 100%;
   height: ${(props) => (props.height ? props.height : "auto")};
@@ -68,7 +73,9 @@ const SuperContainer = styled.div`
   justify-content: ${(props) =>
         props.justifyContent ? props.justifyContent : "center"};
   flex-direction: ${(props) => (props.direction ? props.direction : "row")};
-  margin: ${(props) => (props.margin ? props.margin : "0")}; 
+  margin: ${(props) => (props.margin ? props.margin : "0")};
+
+  min-height: ${(props) => (props.minHeight ? props.minHeight : "unset")};
 `;
 
 const Wrapper = styled.div`
