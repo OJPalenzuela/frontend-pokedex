@@ -47,6 +47,7 @@ const searchPokemon = (name) => {
                 })
             })
             .catch((e) => {
+
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
