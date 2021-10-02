@@ -9,6 +9,7 @@
     "axios": "^0.21.4",
     "bootstrap": "5.1.1",
     "firebase": "^9.1.0",
+    "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-rc.0",
     "react-dom": "^17.0.2",
@@ -20,7 +21,8 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.1",
     "sweetalert2": "^11.1.7",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
