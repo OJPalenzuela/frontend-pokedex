@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Container, DELETE, Img, Paragraph, START, typeColors } from "../assets/styles/style";
+import { Container, DELETE, EDIT, Img, Paragraph, START, typeColors } from "../assets/styles/style";
 import { favoriteDelete, favoriteNew } from "../redux/actions/cardActions";
 import { setPokemon } from "../redux/actions/pokemonActions";
 
@@ -11,9 +11,18 @@ const Card = ({ pokemon, add }) => {
     const auth = useSelector(state => state.auth)
 
     const handleGoToDetail = () => {
-        dispatch(setPokemon(pokemon))
+        handlePokemon()
         history.push(`/pokemon/${pokemon.name}`);
     };
+
+    const handleGoToEdit = () => {
+        handlePokemon()
+        history.push(`/edit/${pokemon.uid}`);
+    };
+
+    const handlePokemon = () => {
+        dispatch(setPokemon(pokemon))
+    }
 
 
     const color = `linear-gradient(to right,
@@ -107,21 +116,6 @@ const Card = ({ pokemon, add }) => {
                 }
             </Container>
             <Container>
-                {
-                    auth.isAuthenticated ? (add ? (
-                        <Container onClick={() => dispatch(favoriteNew(pokemon))} background={"#ffc107"} padding={"2px"} radius="4px">
-                            <START color={"#fff"}
-                                size={25} />
-                        </Container>
-                    ) : (
-                        <Container onClick={() => dispatch(favoriteDelete(pokemon.uid))} background={"#ff0f07"} padding={"2px"} radius="4px">
-                            <DELETE color={"#fff"}
-                                size={25} />
-                        </Container>
-                    )
-                    ) : null
-                }
-
                 <Container onClick={() => handleGoToDetail()} background={"#2486be"} padding={"2px"} radius="4px">
                     <Paragraph
                         weight={"bold"}
@@ -130,6 +124,30 @@ const Card = ({ pokemon, add }) => {
                         Details
                     </Paragraph>
                 </Container>
+                {
+                    auth.isAuthenticated ? (add ? (
+
+                        <Container onClick={() => dispatch(favoriteNew(pokemon))} background={"#ffc107"} padding={"2px"} radius="4px">
+                            <START color={"#fff"}
+                                size={25} />
+                        </Container>
+
+                    ) : (
+                        <>
+                            <Container onClick={() => dispatch(favoriteDelete(pokemon.uid))} background={"#ff0f07"} padding={"2px"} radius="4px">
+                                <DELETE color={"#fff"}
+                                    size={25} />
+                            </Container>
+                            <Container onClick={() => handleGoToEdit()}  background={"#6aff07"} padding={"2px"} radius="4px">
+                                <EDIT color={"#fff"}
+                                    size={25} />
+                            </Container>
+                        </>
+                    )
+                    ) : null
+                }
+
+
             </Container>
         </Container>
 

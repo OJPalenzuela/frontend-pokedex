@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 
 
@@ -113,6 +113,11 @@ const DELETE = styled(AiFillDelete)`
   transition: color 200ms;
 `;
 
+const EDIT = styled(FaEdit)`
+  cursor: pointer;
+  transition: color 200ms;
+`;
+
 export {
   Container,
   GlobalStyle,
@@ -123,4 +128,5 @@ export {
   Paragraph,
   START,
   DELETE,
+  EDIT,
 };

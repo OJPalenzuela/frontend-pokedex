@@ -18,6 +18,27 @@ export const favoriteDelete = (id) => {
     }
 }
 
+export const favoriteEdit = (pokemon, name) => {
+    return async (dispatch, getState) => {
+        const { uid } = getState().auth;
+
+        const newPokemon = {
+            ...pokemon,
+            "name": name
+        }
+        console.log(newPokemon)
+
+        const cardFire = { ...newPokemon}
+        delete cardFire.uid
+
+        await db.doc(`${uid}/pokemon/favorite/${pokemon.uid}`).update(newPokemon)
+        
+
+        dispatch(listFavorite(uid))
+
+    }
+}
+
 export const listFavorite = (uid) => {
     return async (dispatch) => {
         const list = await loadFavorites(uid);

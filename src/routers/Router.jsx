@@ -7,6 +7,7 @@ import {
   Switch,
 } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import Edit from "../containers/Edit";
 import Favorites from "../containers/Favorites";
 import Home from "../containers/Home";
 import Login from "../containers/Login";
@@ -35,6 +36,7 @@ const Routers = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/pokemon/:name" component={Pokemon} />
+        <PrivateRouter exact path="/edit/:uid" component={Edit} />
         <PrivateRouter exact path="/favorites" component={Favorites} />
         <PublicRouter exact path="/auth/login" component={Login} />
         <PublicRouter exact path="/auth/register" component={Register} />
