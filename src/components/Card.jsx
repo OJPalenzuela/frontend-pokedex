@@ -1,13 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Container, Img, Paragraph, typeColors } from "../assets/styles/style";
+import { Container, DELETE, Img, Paragraph, START, typeColors } from "../assets/styles/style";
+import { favoriteDelete, favoriteNew } from "../redux/actions/cardActions";
 import { setPokemon } from "../redux/actions/pokemonActions";
 
-const Card = ({ pokemon }) => {
+const Card = ({ pokemon, add }) => {
     const history = useHistory()
     const dispatch = useDispatch()
-    
+    const auth = useSelector(state => state.auth)
+
     const handleGoToDetail = () => {
         dispatch(setPokemon(pokemon))
         history.push(`/pokemon/${pokemon.name}`);
@@ -30,7 +32,7 @@ const Card = ({ pokemon }) => {
             radius={"5px"}
             shadow={"5px 5px 5px -4px rgba(0,0,0,0.5)"}
 
-            onClick={() => handleGoToDetail()}
+
         >
 
             <Container
@@ -103,6 +105,31 @@ const Card = ({ pokemon }) => {
                         </Container>
                     ) : null
                 }
+            </Container>
+            <Container>
+                {
+                    auth.isAuthenticated ? (add ? (
+                        <Container onClick={() => dispatch(favoriteNew(pokemon))} background={"#ffc107"} padding={"2px"} radius="4px">
+                            <START color={"#fff"}
+                                size={25} />
+                        </Container>
+                    ) : (
+                        <Container onClick={() => dispatch(favoriteDelete(pokemon.uid))} background={"#ff0f07"} padding={"2px"} radius="4px">
+                            <DELETE color={"#fff"}
+                                size={25} />
+                        </Container>
+                    )
+                    ) : null
+                }
+
+                <Container onClick={() => handleGoToDetail()} background={"#2486be"} padding={"2px"} radius="4px">
+                    <Paragraph
+                        weight={"bold"}
+                        cursor="pointer"
+                    >
+                        Details
+                    </Paragraph>
+                </Container>
             </Container>
         </Container>
 

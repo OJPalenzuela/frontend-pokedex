@@ -6,6 +6,7 @@ import logo from "../assets/svg/pokeball.svg"
 import { startLogout } from '../redux/actions/authActions'
 
 
+
 const NavBar = () => {
     const dispatch = useDispatch()
     const {isAuthenticated} = useSelector(state => state.auth)
@@ -17,15 +18,22 @@ const NavBar = () => {
     return (
         <SuperContainer background={typeColors.normal} padding="10px 0px">
             <Wrapper padding="10px">
-                <Container padding="0px 10px" width="auto">
+                <Link to="/">
                     <Img width="32px" height="32px"src={logo} alt="logo" />
-                </Container>
+                </Link>
                 <Container>
                     {
                         isAuthenticated ?
-                        (<Container onClick={() => logoutProfile()}>
-                            Logout
-                        </Container>)
+                        (
+                        <Container>
+                            <Link to="/favorites">
+                                Favorites
+                            </Link>
+                            <Container onClick={() => logoutProfile()}>
+                                Logout
+                            </Container>
+                        </Container>
+                        )
                         :
                         (<Link to={"/auth/login"}>
                             Login
