@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router'
-import { ARROW, backgoundColors, Container, Img, Paragraph, START, typeColors } from '../assets/styles/style';
+import { ARROW, BACK, backgoundColors, Container, Img, Paragraph, START, typeColors } from '../assets/styles/style';
 import { findEvolution, findPokemon, resetEvolution } from '../redux/actions/pokemonActions';
 
 import { ProgressBar } from 'react-bootstrap'
 
 import { FaRulerVertical } from 'react-icons/fa'
 import { RiScales2Fill } from 'react-icons/ri'
+
 
 const Pokemon = () => {
     const params = useParams();
@@ -51,8 +52,17 @@ const Pokemon = () => {
             direction={"column"}
             alignItems={"center"}
         >
-            <Container width="100%" onClick={() => handleGoToHome()}>
-                BACK
+            <Container width="100%" >
+                <Container
+                    onClick={() => handleGoToHome()}
+                    background={backgoundColors[pokemon.types[0].type.name]}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    radius={"6px"}
+                    width={"40px"}
+                >
+                    <BACK size={"30"} color={"white"} />
+                </Container>
             </Container>
             <Container
                 height={"100%"}

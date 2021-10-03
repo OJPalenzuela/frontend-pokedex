@@ -1,7 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { FaStar, FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
-import { TiArrowRightThick } from "react-icons/ti";
+import { TiArrowRightThick, TiArrowLeftThick } from "react-icons/ti";
+import "./font.css";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -11,10 +12,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: unset;
     padding: unset;
-  }
-  
-  #root{
-    height: 100%;
+    font-family: 'Montserrat', sans-serif !important;
   }
   `;
 
@@ -86,7 +84,7 @@ const Container = styled.div`
   bottom: ${(props) => (props.bottom ? props.bottom : "unset")};
   filter: ${(props) => (props.filter ? props.filter : "unset")};
 
-  flex: ${(props) => (props.flex ? props.flex : "unset")};
+  flex: ${(props) => (props.flex ? props.flex : "none")};
 `;
 
 const SuperContainer = styled.div`
@@ -149,6 +147,11 @@ const EDIT = styled(FaEdit)`
 const ARROW = styled(TiArrowRightThick)`
 `;
 
+const BACK = styled(TiArrowLeftThick)`
+  cursor: pointer;
+`
+
+
 export {
   Container,
   GlobalStyle,
@@ -162,4 +165,5 @@ export {
   DELETE,
   EDIT,
   ARROW,
+  BACK,
 };

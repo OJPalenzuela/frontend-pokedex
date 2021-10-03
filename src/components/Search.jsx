@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Form, FormControl } from "react-bootstrap";
 import { findPokemons, searchPokemon } from "../redux/actions/pokemonActions";
+import { Container } from "../assets/styles/style";
 
 const Search = () => {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Search = () => {
     };
 
     return (
-        <div>
+        <Container>
             <Form onSubmit={handleSearch} className="search m-0 d-flex">
                 <FormControl
                     type="search"
@@ -42,7 +43,7 @@ const Search = () => {
                     SEARCH
                 </button>
             </Form>
-        </div>
+        </Container>
     );
 };
 
