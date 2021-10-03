@@ -4,7 +4,7 @@ const BASE_URL = "https://pokeapi.co/api/v2"
 
 const getPokemonByName = async (name) => {
     const url = `${BASE_URL}/pokemon/${name}`
-    const {data} = await axios.get(url)
+    const { data } = await axios.get(url)
     return data
 }
 
@@ -18,13 +18,23 @@ const getPokemons = async () => {
 }
 
 const getSpecies = async (url) => {
-    const {data} = await axios.get(url);
-    const {chain} = await getChain(data.evolution_chain.url)
+    const { data } = await axios.get(url);
+    const { chain } = await getChain(data.evolution_chain.url)
     const list = [
-            chain.species.name,
-            chain.evolves_to[0]?.species?.name,
-            chain.evolves_to[0]?.evolves_to[0]?.species?.name
+        chain.species.name
     ]
+
+    if (chain?.evolves_to[0]?.species?.name !== null ||
+        chain?.evolves_to[0]?.species?.name !== undefined) {
+        list.push(
+            chain.evolves_to[0]?.species?.name)
+    }
+
+    if (chain?.evolves_to[0]?.evolves_to[0]?.species?.name !== null ||
+        chain?.evolves_to[0]?.evolves_to[0]?.species?.name !== undefined) {
+        list.push(
+            chain.evolves_to[0]?.evolves_to[0]?.species?.name)
+    }
 
     const res = getInfoEvolution(list)
 
@@ -34,22 +44,25 @@ const getSpecies = async (url) => {
 const getInfoEvolution = async (array) => {
     let res = []
     for (let i = 0; i < array.length; i++) {
-        if(array[i] !== null || array[i] !== undefined) {
-            if(array[i] === undefined) {
+        if (array[i] !== null || array[i] !== undefined) {
+            if (array[i] === undefined) {
                 break
             }
             let data = await getPokemonByName(array[i])
-            res = [...res, data]
+            res = [...res, {
+                "name": data.name,
+                "image": data.sprites.front_default
+            }]
         }
-        
+
     }
     return res
 }
 
 const getChain = async (url) => {
-    const {data} = await axios.get(url);
+    const { data } = await axios.get(url);
 
     return data
 }
 
-export {getPokemons, getPokemonByName, getSpecies, getInfoEvolution}
+export { getPokemons, getPokemonByName, getSpecies, getInfoEvolution }

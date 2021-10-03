@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { FaStar, FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
+import { TiArrowRightThick } from "react-icons/ti";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -42,7 +43,7 @@ const backgoundColors = {
   electric: 'rgb(187, 151, 7)',
   normal: 'rgb(112, 112, 72) ',
   fire: 'rgb(171 79 13)',
-  water: '#6890F0',
+  water: 'rgb(20, 75, 204)',
   ice: '#rgb(66, 174, 174)',
   rock: 'rgb(121, 106, 37)',
   flying: 'rgb(77, 30, 220)',
@@ -145,6 +146,9 @@ const EDIT = styled(FaEdit)`
   transition: color 200ms;
 `;
 
+const ARROW = styled(TiArrowRightThick)`
+`;
+
 export {
   Container,
   GlobalStyle,
@@ -157,4 +161,5 @@ export {
   START,
   DELETE,
   EDIT,
+  ARROW,
 };

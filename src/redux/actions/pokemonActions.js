@@ -67,6 +67,11 @@ const setPokemon = (pokemon) => ({
     payload: pokemon
 })
 
+const resetEvolution = () => ({
+    type: types.resetEvolution,
+    payload: {}
+})
+
 const searchPokemon = (name) => {
     return (dispacth) => {
         getPokemonByName(name)
@@ -87,4 +92,11 @@ const searchPokemon = (name) => {
     }
 }
 
-export { findPokemons, searchPokemon, findPokemon, setPokemon, findEvolution, findInfoEvolution }
+export { 
+    findPokemons, 
+    searchPokemon, 
+    findPokemon, 
+    setPokemon, 
+    findEvolution, 
+    findInfoEvolution,
+    resetEvolution }

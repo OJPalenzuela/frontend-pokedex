@@ -13,4 +13,6 @@ export const types = {
 
     setEvolution: "[POKEMON] Set evolution",
     getInfoEvolution: "[POKEMON] Info evolution",
+
+    resetEvolution: "[RESET] Evolution"
 }
