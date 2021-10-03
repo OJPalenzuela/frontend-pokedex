@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, createStore, compose } from "redux";
 import thunk from "redux-thunk";
 import { authReducer } from "./reducers/authReducer";
 import { favoriteReducer } from "./reducers/favoriteReducer";
-import { pokemonReducer, pokemonsReducer } from "./reducers/pokemonReducer";
+import { evolutionReducer, infoReducer, pokemonReducer, pokemonsReducer } from "./reducers/pokemonReducer";
 
 
 const composeEnhancers =
@@ -15,6 +15,8 @@ const reducers = combineReducers({
   pokemons: pokemonsReducer,
   pokemon: pokemonReducer,
   favorite: favoriteReducer,
+  evolution: evolutionReducer,
+  info: infoReducer,
 });
 
 export const store = createStore(

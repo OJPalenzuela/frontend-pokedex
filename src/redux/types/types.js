@@ -10,4 +10,7 @@ export const types = {
 
     addFavorite: "[FAVORITE] Add",
     removeFavorite: "[FAVORITE] Remove",
+
+    setEvolution: "[POKEMON] Set evolution",
+    getInfoEvolution: "[POKEMON] Info evolution",
 }

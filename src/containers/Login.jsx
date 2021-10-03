@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { loginGoogle } from '../redux/actions/authActions';
+import { loginFacebook, loginGoogle } from '../redux/actions/authActions';
 import { Link } from 'react-router-dom';
 import { loginEmailPassword } from '../redux/actions/authActions';
 import { useFormik } from 'formik';
@@ -34,6 +34,10 @@ const Login = () => {
 
   const handleLoginGoogle = () => {
     dispatch(loginGoogle());
+  }
+
+  const handleLoginFacebook = () => {
+    dispatch(loginFacebook());
   }
   return (
     <div className="superLogin">
@@ -82,7 +86,7 @@ const Login = () => {
 
           <Button
             variant="primary" className="google-btn"
-            onClick={handleLoginGoogle}>
+            onClick={handleLoginFacebook}>
             <div className="google-icon-wrapper d-flex align-items-center justify-content-center">
               <img className="google-icon"
                 src="https://upload.wikimedia.org/wikipedia/commons/9/91/036-facebook.png"

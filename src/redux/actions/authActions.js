@@ -1,5 +1,5 @@
 import { types } from "../types/types";
-import { firebase, google } from '../../firebase/firebaseConfig';
+import { facebook, firebase, google } from '../../firebase/firebaseConfig';
 import Swal from "sweetalert2";
 
 
@@ -57,6 +57,16 @@ export const loginGoogle = () => {
             })
     }
 }
+
+export const loginFacebook = () => {
+    return (dispatch) => {
+        firebase.auth().signInWithPopup(facebook)
+            .then(({ user }) => {
+                dispatch(login(user.uid, user.displayName))
+            })
+    }
+}
+
 
 export const login = (uid, displayName) => ({
     type: types.login,
