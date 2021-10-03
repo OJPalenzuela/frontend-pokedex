@@ -4,7 +4,13 @@ export const types = {
     logout: "[AUTH] logout",
     signup: "[AUTH] signup",
 
-    getPokemons:  "[POKEMON] Get all pokemons",
-    getPokemon:  "[POKEMON] Get single pokemon",
+    getPokemons: "[POKEMON] Get all pokemons",
+    getPokemon: "[POKEMON] Get single pokemon",
     getInfoPokemons: "[Pokemon] Get info",
+
+    addFavorite: "[FAVORITE] Add",
+    removeFavorite: "[FAVORITE] Remove",
+
+    setEvolution: "[POKEMON] Set evolution",
+    getInfoEvolution: "[POKEMON] Info evolution",
 }

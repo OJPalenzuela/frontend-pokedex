@@ -1,4 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { FaStar, FaEdit } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -30,8 +33,30 @@ const typeColors = {
   ground: '#D2B074',
   dragon: '#DA627D',
   steel: '#1D8A99',
-  fighting: '#2F2F2F',
+  fighting: 'rgb(192 48 40)',
   default: '#2A1A1F',
+  fairy: 'rgb(238 153 172)',
+};
+
+const backgoundColors = {
+  electric: 'rgb(187, 151, 7)',
+  normal: 'rgb(112, 112, 72) ',
+  fire: 'rgb(171 79 13)',
+  water: '#6890F0',
+  ice: '#rgb(66, 174, 174)',
+  rock: 'rgb(121, 106, 37)',
+  flying: 'rgb(77, 30, 220)',
+  grass: 'rgb(76 140 44)',
+  psychic: 'rgb(211, 9, 69)',
+  ghost: 'rgb(74, 58, 100)',
+  bug: 'rgb(107, 117, 21)',
+  poison: 'rgb(106, 42, 106)',
+  ground: 'rgb(178, 140, 36)',
+  dragon: 'rgb(62, 7, 192)',
+  steel: 'rgb(20, 75, 204)',
+  fighting: 'rgb(123, 30, 25)',
+  default: '#2A1A1F',
+  fairy: 'rgb(218, 37, 76)',
 };
 
 const Container = styled.div`
@@ -39,13 +64,13 @@ const Container = styled.div`
   flex-wrap: ${(props) => (props.flexWrap ? props.flexWrap : "wrap")};
   flex-direction: ${(props) => (props.direction ? props.direction : "row")};
   background: ${(props) =>
-        props.background ? props.background : "transparent"};
+    props.background ? props.background : "transparent"};
   color: ${(props) => (props.color ? props.color : "black")};
   width: ${(props) => (props.width ? props.width : "auto")};
   height: ${(props) => (props.height ? props.height : "auto")};
   padding: ${(props) => (props.padding ? props.padding : "0")};
   justify-content: ${(props) =>
-        props.justifyContent ? props.justifyContent : "flex-start"};
+    props.justifyContent ? props.justifyContent : "flex-start"};
   border-radius: ${(props) => (props.radius ? props.radius : "0")};
   margin: ${(props) => (props.margin ? props.margin : "0")};
   align-items: ${(props) => (props.alignItems ? props.alignItems : "unset")};
@@ -66,12 +91,12 @@ const Container = styled.div`
 const SuperContainer = styled.div`
   display: flex;
   background: ${(props) =>
-        props.background ? props.background : "transparent"};
+    props.background ? props.background : "transparent"};
   width: 100%;
   height: ${(props) => (props.height ? props.height : "auto")};
   padding: ${(props) => (props.padding ? props.padding : "0px")};
   justify-content: ${(props) =>
-        props.justifyContent ? props.justifyContent : "center"};
+    props.justifyContent ? props.justifyContent : "center"};
   flex-direction: ${(props) => (props.direction ? props.direction : "row")};
   margin: ${(props) => (props.margin ? props.margin : "0")};
 
@@ -83,7 +108,7 @@ const Wrapper = styled.div`
   max-width: 1366px;
   width: 100%;
   justify-content: ${(props) =>
-        props.justifyContent ? props.justifyContent : "space-between"};
+    props.justifyContent ? props.justifyContent : "space-between"};
   flex-wrap: wrap;
 `;
 
@@ -97,16 +122,39 @@ const Paragraph = styled.p`
   font-size: ${(props) => (props.size ? props.size : "16px")};
   font-weight: ${(props) => (props.weight ? props.weight : "normal")};
   margin: ${(props) => (props.margin ? props.margin : "0")};
+
+  width: ${(props) => (props.width ? props.width : "auto")};
+  height: ${(props) => (props.height ? props.height : "auto")};
+
+  background: ${(props) => (props.background ? props.background : "transparent")};
+
+  cursor: ${(props) => (props.cursor ? props.cursor : "unset")};
 `
 
+const START = styled(FaStar)`
+  cursor: pointer;
+  transition: color 200ms;
+`;
+const DELETE = styled(AiFillDelete)`
+  cursor: pointer;
+  transition: color 200ms;
+`;
 
+const EDIT = styled(FaEdit)`
+  cursor: pointer;
+  transition: color 200ms;
+`;
 
 export {
-    Container,
-    GlobalStyle,
-    SuperContainer,
-    Wrapper,
-    typeColors,
-    Img,
-    Paragraph,
+  Container,
+  GlobalStyle,
+  SuperContainer,
+  Wrapper,
+  typeColors,
+  backgoundColors,
+  Img,
+  Paragraph,
+  START,
+  DELETE,
+  EDIT,
 };

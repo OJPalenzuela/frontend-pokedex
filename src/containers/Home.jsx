@@ -17,13 +17,13 @@ const Home = () => {
                     <Search />
                 </Container>
                 <Wrapper>
-                {
-                pokemons.map((pokemon, id) => (
-                    <Card pokemon={pokemon} key={id}/>
-                ))
-            }
+                    {
+                        pokemons.map((pokemon, id) => (
+                            <Card add={true} pokemon={pokemon} key={id} />
+                        ))
+                    }
                 </Wrapper>
-            
+
             </Container>
         </SuperContainer>
     )

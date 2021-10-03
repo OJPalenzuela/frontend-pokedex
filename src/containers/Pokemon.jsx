@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router'
-import { Container, Img, Paragraph, typeColors } from '../assets/styles/style';
-import { findPokemon } from '../redux/actions/pokemonActions';
+import { backgoundColors, Container, Img, Paragraph, typeColors } from '../assets/styles/style';
+import { findEvolution, findPokemon } from '../redux/actions/pokemonActions';
 
 import {ProgressBar} from 'react-bootstrap'
 
@@ -10,6 +10,7 @@ const Pokemon = () => {
     const params = useParams();
     const history = useHistory()
     const state = useSelector(state => state.pokemon)
+    /* const evolution = useSelector(state => state.evolution) */
     const dispatch = useDispatch()
 
     const [pokemon, setPokemon] = useState(state)
@@ -21,6 +22,7 @@ const Pokemon = () => {
         history.push(`/`);
     };
 
+    
 
     useEffect(() => {
         if (state === null || state === undefined || state.name !== params.name) {
@@ -30,7 +32,10 @@ const Pokemon = () => {
         setColorOne(typeColors[pokemon.types[0].type.name])
         setColorTwo(pokemon.types[1] ? typeColors[pokemon.types[1].type.name] : typeColors[pokemon.types[0].type.name])
         
+        dispatch(findEvolution(pokemon.species.url))
+
     }, [dispatch, pokemon, params, state])
+
     return (
         <Container
             background={`linear-gradient(to right,
@@ -55,8 +60,7 @@ const Pokemon = () => {
             >
                 <Container
                     className="text-capitalize"
-                    background={colorOne}
-                    filter={"contrast(0.5)"}
+                    background={backgoundColors[pokemon.types[0].type.name]}   
                     padding={"8px"}
                     justifyContent={"center"}
                     alignItems={"center"}
@@ -161,6 +165,19 @@ const Pokemon = () => {
                             }
                         </Container>
                     </Container>
+                </Container>
+                <Container
+                    className="text-capitalize"
+                    background={backgoundColors[pokemon.types[0].type.name]}        
+                    padding={"8px"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                >
+                    <Paragraph
+                    >Evolutions</Paragraph>
+                </Container>
+                <Container>
+                    
                 </Container>
             </Container>
         </Container>

@@ -1,5 +1,5 @@
 import Swal from "sweetalert2"
-import { getPokemonByName, getPokemons } from "../../services/pokemon"
+import { getInfoEvolution, getPokemonByName, getPokemons, getSpecies } from "../../services/pokemon"
 import { types } from "../types/types"
 
 const findPokemons = () => {
@@ -23,6 +23,36 @@ const findPokemon = (name) => {
             .then((pokemon) => {
                 dispacth({
                     type: types.getPokemon,
+                    payload: pokemon
+                })
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+    }
+}
+
+const findEvolution = (url) => {
+    return (dispacth) => {
+        getSpecies(url)
+            .then((pokemon) => {
+                dispacth({
+                    type: types.setEvolution,
+                    payload: pokemon
+                })
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+    }
+}
+
+const findInfoEvolution = (array) => {
+    return (dispacth) => {
+        getInfoEvolution(array)
+            .then((pokemon) => {
+                dispacth({
+                    type: types.getInfoEvolution,
                     payload: pokemon
                 })
             })
@@ -57,4 +87,4 @@ const searchPokemon = (name) => {
     }
 }
 
-export { findPokemons, searchPokemon, findPokemon, setPokemon }
+export { findPokemons, searchPokemon, findPokemon, setPokemon, findEvolution, findInfoEvolution }

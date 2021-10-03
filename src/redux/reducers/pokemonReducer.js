@@ -51,13 +51,22 @@ const pokemonReducer = (state = initialState, action) => {
   }
 };
 
-const infoReducer = (state = [], action) => {
+const evolutionReducer = (state = {}, action) => {
   switch (action.type) {
-    case types.getInfoPokemons:
+    case types.setEvolution:
       return action.payload
     default:
       return state;
   }
 };
 
-export { pokemonsReducer, infoReducer, pokemonReducer };
+const infoReducer = (state = [], action) => {
+  switch (action.type) {
+    case types.getInfoEvolution:
+      return action.payload
+    default:
+      return state;
+  }
+};
+
+export { pokemonsReducer, infoReducer, pokemonReducer, evolutionReducer };
