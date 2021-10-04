@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik';
 import { favoriteEdit } from '../redux/actions/cardActions';
 import { Container, Img, Wrapper } from '../assets/styles/style';
+import { useHistory } from 'react-router';
 
 const Edit = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const pokemon = useSelector(state => state.pokemon)
 
   const formik = useFormik({
@@ -15,6 +17,7 @@ const Edit = () => {
     onSubmit: () => {
       if (pokemon.uid !== "") {
         dispatch(favoriteEdit(pokemon, name))
+        history.push("/favorites")
       }
     },
   });
