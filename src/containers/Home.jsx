@@ -1,13 +1,26 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Img, SuperContainer, Wrapper, Paragraph, Container } from '../assets/styles/style'
+import { SuperContainer, Wrapper, Container } from '../assets/styles/style'
 import Card from '../components/Card'
 import Search from '../components/Search'
-import logo from "../assets/svg/pokedex.svg"
+import Banner from '../components/Banner'
+
+import {motion} from "framer-motion"
+import { animations } from '../assets/animations/animations'
+
+
 
 const Home = () => {
     const pokemons = useSelector(state => state.pokemons)
+    const {name} = useSelector(state => state.auth)
     return (
+        <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={animations.main.pageVariants}
+            transition={animations.main.pageTransitions}
+        >
         <SuperContainer>
             <Wrapper>
                 <Container
@@ -17,27 +30,7 @@ const Home = () => {
                     alignItems="center"
                     margin="24px 0px"
                 >
-                    <Container width="100%" justifyContent="center" alignItems="center" >
-                        <Container>
-                            <Container justifyContent="center" alignItems="center">
-                                <Img src={logo} width="140px" />
-                            </Container>
-                            <Container
-                            justifyContent="center" alignItems="center"
-                            left="-40px"
-                            position="relative"
-                            >
-
-                                <Paragraph
-                                    color={"black"}
-                                    size={"60px"}
-                                    weight={"bold"}
-                                >
-                                    Pokédex
-                                </Paragraph>
-                            </Container>
-                        </Container>
-                    </Container>
+                    <Banner site={name}/>
 
                     <Container margin={"24px 0px"} width="100%" justifyContent={"center"} alignItems={"center"}>
 
@@ -54,6 +47,7 @@ const Home = () => {
 
             </Wrapper>
         </SuperContainer>
+        </motion.div>
     )
 }
 

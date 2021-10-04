@@ -9,6 +9,11 @@ import { ProgressBar } from 'react-bootstrap'
 import { FaRulerVertical } from 'react-icons/fa'
 import { RiScales2Fill } from 'react-icons/ri'
 
+import {motion} from "framer-motion"
+import { animations } from '../assets/animations/animations';
+import { statsPokemon, typesPokemon } from '../helpers/diccionario';
+
+
 
 const Pokemon = () => {
     const params = useParams();
@@ -38,10 +43,19 @@ const Pokemon = () => {
         setColorTwo(pokemon.types[1] ? typeColors[pokemon.types[1].type.name] : typeColors[pokemon.types[0].type.name])
 
         dispatch(findEvolution(pokemon.species.url))
-
+        window.scrollTo(0, 0)
     }, [dispatch, pokemon, params, state])
 
     return (
+        <motion.div
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={animations.info.pageVariants}
+        transition={animations.info.pageTransitions}
+        >
+
+        
         <Container
             background={`linear-gradient(to right,
                 ${colorOne} 50%,
@@ -126,7 +140,7 @@ const Pokemon = () => {
                                                     weight={"bold"}
                                                     size={"12px"}
                                                 >
-                                                    {pokemon.types[0].type.name}
+                                                    {typesPokemon[pokemon.types[0].type.name]}
                                                 </Paragraph>
                                             </Container>
                                         ) : null
@@ -145,7 +159,7 @@ const Pokemon = () => {
                                                     weight={"bold"}
                                                     size={"12px"}
                                                 >
-                                                    {pokemon.types[1].type.name}
+                                                    {typesPokemon[pokemon.types[1].type.name]}
                                                 </Paragraph>
                                             </Container>
                                         ) : null
@@ -168,8 +182,8 @@ const Pokemon = () => {
                             {
                                 pokemon.stats.map((info, key) => (
                                     <Container key={key} justifyContent={"space-between"}>
-                                        <Paragraph className="text-uppercase" color={"black"}>
-                                            {info.stat.name.replace("-", " ")}
+                                        <Paragraph className="text-capitalize" color={"black"}>
+                                            {statsPokemon[info.stat.name.replace("-", "")]}
                                         </Paragraph>
                                         <Container width="200px" alignItems={"center"}>
                                             <ProgressBar style={{ "width": "100%" }} max="200" now={info.base_stat} label={`${info.base_stat}`} />
@@ -188,7 +202,7 @@ const Pokemon = () => {
                     alignItems={"center"}
                 >
                     <Paragraph
-                    >Profile</Paragraph>
+                    >Perfil</Paragraph>
                 </Container>
                 <Container
                     padding={"12px"}
@@ -197,13 +211,13 @@ const Pokemon = () => {
                     <Container margin="4px" alignItems="center">
                         <FaRulerVertical color={"black"} size={"20"} />
                         <Paragraph weight={"bold"} color="black">
-                            Height: {pokemon?.height / 10}m
+                            Altura: {pokemon?.height / 10} m
                         </Paragraph>
                     </Container>
                     <Container margin="4px" alignItems="center">
                         <RiScales2Fill color={"black"} size={"20"} />
                         <Paragraph weight={"bold"} color="black">
-                            Weight: {pokemon?.weight / 10}kg
+                            Peso: {pokemon?.weight / 10} kg
                         </Paragraph>
                     </Container>
                 </Container>
@@ -215,7 +229,7 @@ const Pokemon = () => {
                     alignItems={"center"}
                 >
                     <Paragraph
-                    >Abilities</Paragraph>
+                    >Habilidades</Paragraph>
                 </Container>
                 <Container
                     padding={"12px"}
@@ -246,7 +260,7 @@ const Pokemon = () => {
                     alignItems={"center"}
                 >
                     <Paragraph
-                    >Evolutions</Paragraph>
+                    >Evoluciones</Paragraph>
                 </Container>
                 {
                     evolution.length > 0 && (
@@ -340,6 +354,8 @@ const Pokemon = () => {
 
             </Container>
         </Container>
+        
+        </motion.div>
     )
 }
 

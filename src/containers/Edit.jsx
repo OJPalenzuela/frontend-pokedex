@@ -54,7 +54,7 @@ const Edit = () => {
               alignItems="center"
               justifyContent="center"
             >
-              <h2>Edit my Pokemon</h2>
+              <h2>Editar mi Pokémon</h2>
               <form className="card-body " onSubmit={formik.handleSubmit}>
                 <Container
                   direction="column"
@@ -76,7 +76,7 @@ const Edit = () => {
                   </Container>
                   <Container className="form-group">
                     <label htmlFor="name">
-                      Name
+                      Nombre
                     </label>
                     <input
                       type="text"
@@ -88,7 +88,7 @@ const Edit = () => {
                     />
                   </Container>
                   <button type="submit" className="btn btn-primary mt-2">
-                    Save
+                    Guardar
                   </button>
                 </Container>
 

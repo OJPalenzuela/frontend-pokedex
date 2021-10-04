@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { backgoundColors, Container, DELETE, EDIT, Img, Paragraph, START, typeColors } from "../assets/styles/style";
+import { typesPokemon } from "../helpers/diccionario";
 import { favoriteDelete, favoriteNew } from "../redux/actions/cardActions";
 import { setPokemon } from "../redux/actions/pokemonActions";
 
@@ -94,7 +95,7 @@ const Card = ({ pokemon, add }) => {
                             className="text-uppercase"
                             width={"auto"}
                             background={typeColors[pokemon.types[0].type.name]}
-                            padding={"4px"}
+                            padding={"2px"}
                             flex={"1"}
                             alignItems={"center"}
                             justifyContent={"center"}
@@ -102,9 +103,9 @@ const Card = ({ pokemon, add }) => {
                             <Paragraph
                                 color={"white"}
                                 weight={"bold"}
-                                size={"12px"}
+                                size={"11px"}
                             >
-                                {pokemon.types[0].type.name}
+                                {typesPokemon[pokemon.types[0].type.name]}
                             </Paragraph>
                         </Container>
                     ) : null
@@ -115,7 +116,7 @@ const Card = ({ pokemon, add }) => {
                             className="text-uppercase"
                             width={"auto"}
                             background={typeColors[pokemon.types[1].type.name]}
-                            padding={"4px"}
+                            padding={"2px"}
                             alignItems={"center"}
                             justifyContent={"center"}
                             flex={"1"}
@@ -123,43 +124,49 @@ const Card = ({ pokemon, add }) => {
                             <Paragraph
                                 color={"white"}
                                 weight={"bold"}
-                                size={"12px"}
+                                size={"11px"}
                             >
-                                {pokemon.types[1].type.name}
+                                {typesPokemon[pokemon.types[1].type.name]}
                             </Paragraph>
                         </Container>
                     ) : null
                 }
             </Container>
             <Container margin={"4px 0"} width="100%">
-                <Container alignItems={"center"}
+                <Container className="btn btn-primary" alignItems={"center"}
                     justifyContent={"center"} flex={"1"} onClick={() => handleGoToDetail()} background={"#2486be"} padding={"2px"} >
                     <Paragraph
                         weight={"bold"}
                         cursor="pointer"
                     >
-                        Details
+                        Detalles
                     </Paragraph>
                 </Container>
                 {
                     auth.isAuthenticated ? (add ? (
 
-                        <Container onClick={() => dispatch(favoriteNew(pokemon))} background={"#ffc107"} padding={"2px"} >
+                        <Container className="btn btn-warning" onClick={() => dispatch(favoriteNew(pokemon))} background={"#ffc107"} padding={"2px"} >
                             <START color={"#fff"}
                                 size={25} />
                         </Container>
 
                     ) : (
-                        <>
-                            <Container onClick={() => dispatch(favoriteDelete(pokemon.uid))} background={"#ff0f07"} padding={"2px"}>
+                        <Container
+                        alignItems={"center"}
+                    justifyContent={"center"}
+                    width={"100%"}
+                        >
+                            <Container className="btn btn-danger" alignItems={"center"}
+                    justifyContent={"center"} flex={1} onClick={() => dispatch(favoriteDelete(pokemon.uid))} background={"#ff0f07"} padding={"2px"}>
                                 <DELETE color={"#fff"}
                                     size={25} />
                             </Container>
-                            <Container onClick={() => handleGoToEdit()} background={"#3c9401"} padding={"2px"}>
+                            <Container className="btn btn-success" alignItems={"center"}
+                    justifyContent={"center"} flex={1} onClick={() => handleGoToEdit()} background={"#3c9401"} padding={"2px"}>
                                 <EDIT color={"#fff"}
                                     size={25} />
                             </Container>
-                        </>
+                        </Container>
                     )
                     ) : null
                 }

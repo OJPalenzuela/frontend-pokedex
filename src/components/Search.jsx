@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Form, FormControl } from "react-bootstrap";
 import { findPokemons, searchPokemon } from "../redux/actions/pokemonActions";
-import { Container } from "../assets/styles/style";
+import { Container, Button } from "../assets/styles/style";
+import {FaSearch} from "react-icons/fa"
 
 const Search = () => {
     const dispatch = useDispatch();
@@ -38,10 +39,11 @@ const Search = () => {
                     aria-label="Search"
                     value={searchTerm}
                     onChange={handleChange}
+                    style={{"borderRadius":"6px 0px 0px 6px"}}
                 />
-                <button className="">
-                    SEARCH
-                </button>
+                <Button className="btn btn-primary" radius={"0px 6px 6px 0px"} background={"#0086ff"}>
+                    <FaSearch size={"25"} color={"black"} />
+                </Button>
             </Form>
         </Container>
     );
