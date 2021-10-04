@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { FaStar, FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
+import { TiArrowRightThick, TiArrowLeftThick } from "react-icons/ti";
+import "./font.css";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -10,10 +12,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: unset;
     padding: unset;
-  }
-  
-  #root{
-    height: 100%;
+    font-family: 'Montserrat', sans-serif !important;
   }
   `;
 
@@ -36,13 +35,14 @@ const typeColors = {
   fighting: 'rgb(192 48 40)',
   default: '#2A1A1F',
   fairy: 'rgb(238 153 172)',
+  dark: 'rgb(112, 88, 72)'
 };
 
 const backgoundColors = {
   electric: 'rgb(187, 151, 7)',
   normal: 'rgb(112, 112, 72) ',
   fire: 'rgb(171 79 13)',
-  water: '#6890F0',
+  water: 'rgb(20, 75, 204)',
   ice: '#rgb(66, 174, 174)',
   rock: 'rgb(121, 106, 37)',
   flying: 'rgb(77, 30, 220)',
@@ -57,6 +57,7 @@ const backgoundColors = {
   fighting: 'rgb(123, 30, 25)',
   default: '#2A1A1F',
   fairy: 'rgb(218, 37, 76)',
+  dark: 'rgb(72, 56, 46)'
 };
 
 const Container = styled.div`
@@ -85,7 +86,7 @@ const Container = styled.div`
   bottom: ${(props) => (props.bottom ? props.bottom : "unset")};
   filter: ${(props) => (props.filter ? props.filter : "unset")};
 
-  flex: ${(props) => (props.flex ? props.flex : "unset")};
+  flex: ${(props) => (props.flex ? props.flex : "none")};
 `;
 
 const SuperContainer = styled.div`
@@ -145,6 +146,61 @@ const EDIT = styled(FaEdit)`
   transition: color 200ms;
 `;
 
+const ARROW = styled(TiArrowRightThick)`
+`;
+
+const BACK = styled(TiArrowLeftThick)`
+  cursor: pointer;
+`
+
+const Button = styled.button`
+  width: ${(props) => (props.width ? props.width : "auto")};
+  height: ${(props) => (props.height ? props.height : "auto")};
+  display: ${(props) => (props.display ? props.display : "flex")};
+  justify-content: ${(props) =>
+    props.justifyContent ? props.justifyContent : "center"};
+  align-items: ${(props) => (props.alignItems ? props.alignItems : "center")};
+  background: ${(props) =>
+    props.background ? props.background : "whitesmoke"};
+  color: ${(props) => (props.color ? props.color : "black")};
+  margin: ${(props) => (props.margin ? props.margin : "0")};
+  padding: ${(props) => (props.padding ? props.padding : "0.375rem 0.75rem")};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : "1rem")};
+  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "400")};
+  letter-spacing: ${(props) =>
+    props.letterSpacing ? props.letterSpacing : "0"};
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  border: ${(props) => (props.border ? props.border : "1px solid transparent")};
+  border-radius: ${(props) => (props.radius ? props.radius : "0.25rem")};
+  align-self: center;
+  &:disabled {
+    background: darkgray;
+    cursor: auto;
+  }
+  & svg {
+    margin: 0px 5px;
+  }
+`;
+
+const Span = styled.span`
+  background-color: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : "transparent"};
+  border: ${(props) => (props.border ? props.border : "none")};
+  border-radius: ${(props) => (props.radius ? props.radius : "0")};
+  color: ${(props) => (props.color ? props.color : "auto")};
+  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "400")};
+  line-height: ${(props) => (props.lineHeight ? props.lineHeight : "0")};
+  margin: ${(props) => (props.margin ? props.margin : "0")};
+  padding: ${(props) => (props.padding ? props.padding : "auto")};
+`;
+
+
 export {
   Container,
   GlobalStyle,
@@ -157,4 +213,8 @@ export {
   START,
   DELETE,
   EDIT,
+  ARROW,
+  BACK,
+  Button,
+  Span,
 };

@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
-  BrowserRouter as Router,
+  
   Redirect,
   Route,
   Switch,
+  useLocation,
+  
 } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Edit from "../containers/Edit";
@@ -18,9 +20,10 @@ import { login } from "../redux/actions/authActions";
 import { PrivateRouter } from "./PrivateRouter";
 import { PublicRouter } from "./PublicRouter";
 
+import { AnimatePresence } from "framer-motion"
 const Routers = () => {
-
   const dispatch = useDispatch()
+  const location = useLocation()
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
@@ -31,18 +34,20 @@ const Routers = () => {
   }, [dispatch])
 
   return (
-    <Router>
+    <div>
       <NavBar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/pokemon/:name" component={Pokemon} />
-        <PrivateRouter exact path="/edit/:uid" component={Edit} />
-        <PrivateRouter exact path="/favorites" component={Favorites} />
-        <PublicRouter exact path="/auth/login" component={Login} />
-        <PublicRouter exact path="/auth/register" component={Register} />
-        <Redirect to="/" />
-      </Switch>
-    </Router>
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.pathname}>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/pokemon/:name" component={Pokemon} />
+          <PrivateRouter exact path="/edit/:uid" component={Edit} />
+          <PrivateRouter exact path="/favorites" component={Favorites} />
+          <PublicRouter exact path="/auth/login" component={Login} />
+          <PublicRouter exact path="/auth/register" component={Register} />
+          <Redirect to="/" />
+        </Switch>
+      </AnimatePresence>
+    </div>
   );
 };
 

@@ -20,7 +20,6 @@ export const loginEmailPassword = (email, password) => {
 
 
 export const registerEmailPasswordName = (email, pass, name) => {
-    console.log(email, pass, name);
     return (dispatch) => {
         firebase.auth().createUserWithEmailAndPassword(email, pass)
             .then(async ({ user }) => {

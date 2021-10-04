@@ -1,10 +1,17 @@
 import React from 'react'
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { registerEmailPasswordName } from '../redux/actions/authActions';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from "yup";
+import { SuperContainer, Container, Paragraph, Button } from '../assets/styles/style';
+import Banner from '../components/Banner';
+
+import { motion } from "framer-motion"
+import { animations } from '../assets/animations/animations';
+
+
 
 
 const Register = () => {
@@ -45,51 +52,70 @@ const Register = () => {
 
 
     return (
-        <Form onSubmit={formik.handleSubmit} className="form-register">
-            <h1 className="h3 mb-3 font-weight-normal">
-                ¡Registrate en nuestro sistema!
-            </h1>
-            <Form.Control
-                className="mb-1"
-                type="text"
-                placeholder="Enter name"
-                name="name"
-                value={name}
-                onChange={formik.handleChange}
-            />
-            <Form.Control
-                className="mb-1"
-                type="email"
-                placeholder="email"
-                name="email"
-                value={email}
-                onChange={formik.handleChange}
-            />
-            <Form.Control
-                className="mb-1"
-                type="password"
-                placeholder="Password"
-                name="password1"
-                value={password1}
-                onChange={formik.handleChange}
-            />
-            <Form.Control
-                className="mb-1"
-                type="password"
-                placeholder="Password"
-                name="password2"
-                value={password2}
-                onChange={formik.handleChange}
-            />
+        <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={animations.auth.register.pageVariants}
+            transition={animations.auth.pageTransitions}
+        >
 
-            <Button variant="primary" type="submit">
-                Registrarse
-            </Button>
+            <SuperContainer>
+                <Container direction="column">
+                    <Container margin="22px" padding="16px" background={"#e6e6e6"} direction="column">
+                        <Banner site={"Registro"} />
 
-            <Link className="redirect" to="/auth/login">Iniciar sesión</Link>
+                        <Form onSubmit={formik.handleSubmit}>
 
-        </Form>
+                            <Form.Control
+                                className="mb-1"
+                                type="text"
+                                placeholder="Ingresa tu nombre"
+                                name="name"
+                                value={name}
+                                onChange={formik.handleChange}
+                            />
+                            <Form.Control
+                                className="mb-1"
+                                type="email"
+                                placeholder="Ingresa tu Email"
+                                name="email"
+                                value={email}
+                                onChange={formik.handleChange}
+                            />
+                            <Form.Control
+                                className="mb-1"
+                                type="password"
+                                placeholder="Elige una contraseña"
+                                name="password1"
+                                value={password1}
+                                onChange={formik.handleChange}
+                            />
+                            <Form.Control
+                                className="mb-1"
+                                type="password"
+                                placeholder="Verifica tu contraseña"
+                                name="password2"
+                                value={password2}
+                                onChange={formik.handleChange}
+                            />
+                            <Container margin="8px" width="100%" justifyContent={"center"} alignItems={"center"}>
+                                <Button className="btn btn-primary" type="submit">
+                                    Registrarse
+                                </Button>
+                            </Container>
+                        </Form>
+                        <Container width="100%" justifyContent="center" alignItems="center">
+                            <Paragraph color={"black"}>
+                                ¿Ya tienes una cuenta? <Link to="/auth/login">Inicia Sesión</Link>
+                            </Paragraph>
+                        </Container>
+                    </Container>
 
+
+                </Container>
+            </SuperContainer >
+        </motion.div>
     )
 }
 

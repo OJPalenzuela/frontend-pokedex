@@ -55,6 +55,8 @@ const evolutionReducer = (state = {}, action) => {
   switch (action.type) {
     case types.setEvolution:
       return action.payload
+      case types.resetEvolution:
+        return action.payload
     default:
       return state;
   }
