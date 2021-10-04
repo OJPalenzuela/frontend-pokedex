@@ -6,7 +6,7 @@ A Pokédex is made for educational purposes, in which you can get information ab
 
 You'll need [Node.js](https://nodejs.org/) on your local development machine.
 
-1. Clone the repo
+1. Clone the repo with `$ git clone https://github.com/OJPalenzuela/frontend-pokedex.git`
 2. Run `$ yarn install` to install the dependencies
 
 ## Up and running
